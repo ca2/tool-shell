@@ -1,3 +1,13 @@
 #!/bin/bash
 
-grep -rl $'\xEF\xBB\xBF' --include=*.{h,cpp,c,mm,hpp} .  > file_with_boms.txt
+
+#find . -name '*.h' -o -name '*.cpp' -o -name '*.hpp' -o -name '*.mm' -o -name '*.c' -o -name '*.java' -exec grep -l \$'\xEF\xBB\xBF'  {} \; -print > file_with_boms.txt
+
+
+#find . -type f \( -name '*.h' -o -name '*.cpp' -o -name '*.hpp' -o -name '*.mm' -o -name '*.c' -o -name '*.java' \) -exec grep -l \$'\xEF\xBB\xBF'  {} \; -print
+
+
+grep -r --include \*.h --include \*.cpp --include \*.hpp --include \*.c --include \*.mm --include \*.java -l $'\xEF\xBB\xBF' 2>&1 | tee file_with_boms.txt
+
+
+
