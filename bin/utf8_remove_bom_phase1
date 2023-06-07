@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep -rl $'\xEF\xBB\xBF' --include=*.{h,cpp,c,mm,hpp} .  > file_with_boms.txt
